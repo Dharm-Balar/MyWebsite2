@@ -124,14 +124,16 @@
 
     /* Geometric accent */
     .hero-left::before {
+      z-index: -1;
       content: '';
-      position: absolute; top: 50%; left: 4%;
+      position: absolute; top: 50%; left: 0%;
       transform: translateY(-50%);
       width: 160px; height: 160px;
       border: 1px solid var(--sky-200);
       border-radius: 50%; opacity: .5;
     }
     .hero-left::after {
+      z-index: -1;
       content: '';
       position: absolute; top: 50%; left: 6%;
       transform: translateY(-50%);
