@@ -53,6 +53,8 @@
       transform: translate(-50%,-50%);
       transition: transform .18s ease, width .3s, height .3s, opacity .3s;
       opacity: .5;
+      backdrop-filter: blur(2px);
+  box-shadow: 0 0 20px rgba(34,144,196,0.4);
     }
 
     /* ── NAV ── */
@@ -785,6 +787,27 @@
     curR.style.left=rx+'px'; curR.style.top=ry+'px';
     requestAnimationFrame(lerp);
   })();
+
+  const hoverEls = document.querySelectorAll('a, button');
+
+    hoverEls.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        curR.style.transform = 'translate(-50%, -50%) scale(1.4)';
+        cur.style.transform = 'translate(-50%, -50%) scale(1.2)';
+      });
+
+      el.addEventListener('mouseleave', () => {
+        curR.style.transform = 'translate(-50%, -50%) scale(1)';
+        cur.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    document.addEventListener('click', () => {
+        curR.style.transform = 'translate(-50%, -50%) scale(0.7)';
+        setTimeout(() => {
+          curR.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 150);
+      });
 
   // Reveal
   const obs = new IntersectionObserver(entries => {
