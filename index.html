@@ -53,8 +53,9 @@
       transform: translate(-50%,-50%);
       transition: transform .18s ease, width .3s, height .3s, opacity .3s;
       opacity: .5;
-      backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   box-shadow: 0 0 20px rgba(34,144,196,0.4);
+
     }
 
     /* ── NAV ── */
@@ -500,6 +501,12 @@
       .p1,.p2,.p3,.p4,.p5,.p6 { grid-column: auto; grid-row: auto; }
       section { padding: 64px 5%; }
     }
+    @media (pointer: coarse) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -728,13 +735,34 @@
   <div class="contact-grid">
     <div class="reveal">
       <table class="hours-table">
-        <tr><td>Monday</td><td>10 am – 7 pm</td></tr>
-        <tr class="today"><td>Tuesday <span class="now-dot"></span></td><td>10 am – 7 pm</td></tr>
-        <tr><td>Wednesday</td><td>10 am – 7 pm</td></tr>
-        <tr><td>Thursday</td><td>10 am – 7 pm</td></tr>
-        <tr><td>Friday</td><td>10 am – 7 pm</td></tr>
-        <tr><td>Saturday</td><td>10 am – 7 pm</td></tr>
-        <tr class="closed"><td>Sunday<span class="note-sm">Lord Parshuram Jayanti – hours may differ</span></td><td>Closed</td></tr>
+        <tr>
+          <td>Monday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>10 am – 7 pm</td>
+        </tr>
+        <tr class="closed">
+          <td>Sunday</td>
+          <td>Closed</td>
+        </tr>
       </table>
     </div>
     <div class="contact-details reveal">
@@ -777,19 +805,45 @@
     document.getElementById('hdr').classList.toggle('scrolled', scrollY > 20);
   });
 
+  // Current Day Highlight 
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date().getDay(); // 0 = Sunday
+
+    const rows = document.querySelectorAll('.hours-table tr');
+
+    rows.forEach(row => {
+      const dayCell = row.querySelector('td');
+      if (!dayCell) return;
+
+      const dayText = dayCell.textContent.trim();
+
+      if (dayText.includes(days[today])) {
+        row.classList.add('today');
+
+        // add green dot
+        const dot = document.createElement('span');
+        dot.classList.add('now-dot');
+        dayCell.appendChild(dot);
+      }
+    });
+  
+  
   // Cursor
-  const cur = document.getElementById('cur');
-  const curR = document.getElementById('curR');
-  let mx=0, my=0, rx=0, ry=0;
-  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-  (function lerp() {
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    
+    const cur = document.getElementById('cur');
+    const curR = document.getElementById('curR');
+    let mx=0, my=0, rx=0, ry=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+    (function lerp() {
     rx += (mx-rx)*.52; ry += (my-ry)*.52;
     curR.style.left=rx+'px'; curR.style.top=ry+'px';
     requestAnimationFrame(lerp);
   })();
-
+  
   const hoverEls = document.querySelectorAll('a, button');
-
+  
     hoverEls.forEach(el => {
       el.addEventListener('mouseenter', () => {
         curR.style.transform = 'translate(-50%, -50%) scale(1.4)';
@@ -801,16 +855,17 @@
         cur.style.transform = 'translate(-50%, -50%) scale(1)';
       });
     });
-
+    
     document.addEventListener('click', () => {
         curR.style.transform = 'translate(-50%, -50%) scale(0.7)';
         setTimeout(() => {
           curR.style.transform = 'translate(-50%, -50%) scale(1)';
         }, 150);
       });
-
-  // Reveal
-  const obs = new IntersectionObserver(entries => {
+      
+    }
+      // Reveal
+      const obs = new IntersectionObserver(entries => {
     entries.forEach((e,i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i*80);
