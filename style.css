@@ -2280,6 +2280,8 @@ footer {
   .page-hero {
     min-height: 260px;
     padding: 80px 5% 40px;
+    background-position: center;
+    background-size: cover;
   }
   .page-hero h1 {
     font-size: clamp(1.9rem, 5vw, 2.8rem);
@@ -2370,6 +2372,8 @@ footer {
   .page-hero {
     padding: 80px 5% 36px;
     min-height: 240px;
+    background-position: center;
+    background-size: cover;
   }
   .page-hero h1 {
     font-size: clamp(1.7rem, 6vw, 2.3rem);
