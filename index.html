@@ -1,881 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BK Interior Design – Surat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --sky-50:   #f0f8ff;
-      --sky-100:  #dff0fc;
-      --sky-200:  #b8dcf5;
-      --sky-300:  #7ec0e8;
-      --sky-400:  #4aa8d8;
-      --sky-500:  #2290c4;
-      --sky-600:  #1674a0;
-      --cream:    #faf6ef;
-      --warm-100: #f2ebe0;
-      --warm-200: #e0d0bb;
-      --brown-300:#c4a882;
-      --brown-400:#a07850;
-      --brown-500:#7a5c38;
-      --brown-600:#5a4028;
-      --white:    #ffffff;
-      --dark:     #1a1a2e;
-      --text-mid: #4a5568;
-      --text-soft:#7a8899;
-      --shadow-sm: 0 2px 12px rgba(26,26,46,.07);
-      --shadow:    0 6px 30px rgba(26,26,46,.10);
-      --shadow-lg: 0 16px 60px rgba(26,26,46,.14);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-
-    /* ── CURSOR DOT ── */
-    .cursor {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--sky-400); position: fixed;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: transform .1s, width .3s, height .3s, opacity .3s;
-    }
-    .cursor-ring {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 1.5px solid var(--sky-400); position: fixed;
-      pointer-events: none; z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: transform .18s ease, width .3s, height .3s, opacity .3s;
-      opacity: .5;
-  backdrop-filter: blur(2px);
-  box-shadow: 0 0 20px rgba(34,144,196,0.4);
-
-    }
-
-    /* ── NAV ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 6%;
-      height: 70px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(250,246,239,.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--warm-200);
-      transition: box-shadow .3s;
-    }
-    header.scrolled { box-shadow: var(--shadow-sm); }
-
-    .logo { text-decoration: none; display: flex; flex-direction: column; }
-    .logo .l1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700;
-      color: var(--brown-600); letter-spacing: -.01em; line-height: 1;
-    }
-    .logo .l2 {
-      font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--sky-500); margin-top: 2px;
-    }
-
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a {
-      text-decoration: none; font-size: .82rem; font-weight: 400;
-      letter-spacing: .05em; color: var(--text-mid);
-      position: relative; padding-bottom: 2px;
-      transition: color .25s;
-    }
-    nav a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      right: 100%; height: 1px;
-      background: linear-gradient(90deg, var(--sky-400), var(--brown-300));
-      transition: right .3s ease;
-    }
-    nav a:hover { color: var(--dark); }
-    nav a:hover::after { right: 0; }
-    .nav-cta {
-      background: var(--sky-500) !important;
-      color: var(--white) !important;
-      padding: 9px 22px !important; border-radius: 3px;
-      font-weight: 500 !important;
-      box-shadow: 0 3px 12px rgba(34,144,196,.3);
-      transition: background .25s, transform .2s, box-shadow .2s !important;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--sky-600) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(34,144,196,.35) !important; }
-
-    /* ── HERO ── */
-    .hero {
-      height: 100vh; min-height: 680px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      padding-top: 70px; overflow: hidden; position: relative;
-    }
-
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 60px 7% 60px 8%;
-      position: relative; z-index: 2;
-      animation: heroLeft .9s cubic-bezier(.22,1,.36,1) both;
-    }
-
-    /* Geometric accent */
-    /*.hero-left::before {
-      z-index: -1;
-      content: '';
-      position: absolute; top: 50%; left: 0%;
-      transform: translateY(-50%);
-      width: 160px; height: 160px;
-      border: 1px solid var(--sky-200);
-      border-radius: 50%; opacity: .5;
-    }
-    .hero-left::after {
-      z-index: -1;
-      content: '';
-      position: absolute; top: 50%; left: 6%;
-      transform: translateY(-50%);
-      width: 110px; height: 110px;
-      background: var(--sky-100); border-radius: 50%; opacity: .4;
-    } */
-
-    .eyebrow {
-      font-size: .68rem; letter-spacing: .25em; text-transform: uppercase;
-      color: var(--sky-500); margin-bottom: 18px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--sky-400); }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5vw, 5rem);
-      font-weight: 400; line-height: 1.1;
-      color: var(--brown-600); margin-bottom: 24px;
-    }
-    .hero-title em { font-style: italic; color: var(--sky-500); display: block; }
-
-    .hero-desc {
-      font-size: .92rem; line-height: 1.85; color: var(--text-mid);
-      max-width: 380px; margin-bottom: 42px; font-weight: 300;
-    }
-
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .btn-sky {
-      background: var(--sky-500); color: var(--white);
-      padding: 13px 28px; border-radius: 3px;
-      font-size: .82rem; letter-spacing: .07em; font-weight: 500;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(34,144,196,.3);
-      transition: all .25s;
-    }
-    .btn-sky:hover { background: var(--sky-600); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(34,144,196,.35); }
-
-    .btn-ghost {
-      background: transparent; color: var(--brown-500);
-      padding: 13px 28px; border-radius: 3px;
-      font-size: .82rem; letter-spacing: .07em; font-weight: 500;
-      text-decoration: none; border: 1.5px solid var(--brown-300);
-      transition: all .25s;
-    }
-    .btn-ghost:hover { background: var(--warm-100); border-color: var(--brown-400); }
-
-    .hero-nums {
-      display: flex; gap: 36px;
-      margin-top: 52px; padding-top: 36px;
-      border-top: 1px solid var(--warm-200);
-    }
-    .hnum { display: flex; flex-direction: column; }
-    .hnum-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem; font-weight: 500;
-      line-height: 1; color: var(--sky-500);
-    }
-    .hnum-l { font-size: .68rem; letter-spacing: .08em; color: var(--text-soft); margin-top: 4px; }
-
-    .hero-right {
-      position: relative; overflow: hidden;
-      animation: heroRight .9s .15s cubic-bezier(.22,1,.36,1) both;
-    }
-    .hero-right img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center;
-    }
-    /* Diagonal overlay */
-    .hero-right::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, var(--cream) 0%, transparent 18%),
-                  linear-gradient(to top, var(--cream) 0%, transparent 15%);
-    }
-    /* Floating card */
-    .hero-tag {
-      position: absolute; bottom: 48px; left: 40px; z-index: 2;
-      background: var(--white);
-      padding: 16px 22px; border-radius: 6px;
-      border-left: 3px solid var(--sky-400);
-      box-shadow: var(--shadow);
-      font-size: .78rem;
-    }
-    .hero-tag strong {
-      display: block; font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; color: var(--brown-600); margin-bottom: 2px;
-    }
-    .hero-tag span { color: var(--text-soft); }
-
-    /* ── MARQUEE ── */
-    .marquee-wrap {
-      background: var(--sky-500); overflow: hidden;
-      padding: 14px 0; position: relative;
-    }
-    .marquee-track {
-      display: flex; gap: 0;
-      animation: marquee 22s linear infinite;
-      width: max-content;
-    }
-    .marquee-track span {
-      white-space: nowrap;
-      font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(255,255,255,.85); padding: 0 28px;
-    }
-    .marquee-track span::before {
-      content: '◆'; margin-right: 28px; opacity: .5; font-size: .55rem;
-    }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SECTIONS ── */
-    section { padding: 96px 8%; }
-
-    .sec-eyebrow {
-      font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--sky-500); margin-bottom: 10px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .sec-eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--sky-400); }
-
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      font-weight: 400; line-height: 1.2; color: var(--brown-600);
-      margin-bottom: 14px;
-    }
-    .sec-title em { font-style: italic; color: var(--sky-500); }
-    .sec-sub { font-size: .9rem; line-height: 1.85; color: var(--text-soft); max-width: 500px; font-weight: 300; }
-
-    /* ── ABOUT ── */
-    .about { background: var(--white); }
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center; margin-top: 0;
-    }
-    .about-img-wrap {
-      position: relative;
-    }
-    .about-img-main {
-      width: 100%; height: 480px; object-fit: cover;
-      border-radius: 4px; display: block;
-    }
-    .about-img-accent {
-      position: absolute; bottom: -24px; right: -20px;
-      width: 45%; height: 200px; object-fit: cover;
-      border-radius: 4px;
-      border: 5px solid var(--white);
-      box-shadow: var(--shadow);
-    }
-    .about-badge {
-      position: absolute; top: 28px; left: -20px;
-      background: var(--sky-500); color: var(--white);
-      padding: 14px 18px; border-radius: 4px;
-      text-align: center; box-shadow: var(--shadow);
-    }
-    .about-badge strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; }
-    .about-badge span { font-size: .65rem; letter-spacing: .1em; opacity: .85; }
-
-    .about-content { padding-top: 20px; }
-    .about-body { font-size: .9rem; line-height: 1.9; color: var(--text-mid); margin: 20px 0 32px; font-weight: 300; }
-    .about-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
-    .feat-box {
-      background: var(--sky-50); border: 1px solid var(--sky-100);
-      border-radius: 6px; padding: 16px 18px;
-    }
-    .feat-box .fb-title { font-size: .82rem; font-weight: 500; color: var(--brown-600); margin-bottom: 4px; }
-    .feat-box .fb-desc { font-size: .76rem; line-height: 1.5; color: var(--text-soft); }
-
-    /* ── SERVICES ── */
-    .services { background: var(--cream); }
-    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 50px; }
-    .svc-card {
-      background: var(--white); border-radius: 6px;
-      padding: 36px 28px; border: 1px solid var(--warm-200);
-      position: relative; overflow: hidden;
-      transition: all .35s cubic-bezier(.22,1,.36,1);
-    }
-    .svc-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--sky-400), var(--sky-300));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s ease;
-    }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .svc-card:hover::before { transform: scaleX(1); }
-    .svc-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem; font-weight: 500;
-      color: var(--sky-100); line-height: 1; margin-bottom: 18px;
-      transition: color .3s;
-    }
-    .svc-card:hover .svc-num { color: var(--sky-200); }
-    .svc-name { font-size: .95rem; font-weight: 500; color: var(--brown-600); margin-bottom: 10px; letter-spacing: .02em; }
-    .svc-desc { font-size: .82rem; line-height: 1.8; color: var(--text-soft); }
-
-    /* ── PORTFOLIO ── */
-    .portfolio { background: var(--white); }
-    .port-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 48px; }
-    .port-grid {
-      display: grid;
-      grid-template-columns: repeat(12,1fr);
-      grid-template-rows: 280px 280px;
-      gap: 14px;
-    }
-    .port-item {
-      border-radius: 6px; overflow: hidden; position: relative;
-      cursor: pointer;
-    }
-    .port-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); display: block; }
-    .port-item:hover img { transform: scale(1.06); }
-    .port-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(26,26,46,.7) 0%, transparent 50%);
-      opacity: 0; transition: opacity .35s;
-      display: flex; align-items: flex-end; padding: 22px;
-    }
-    .port-item:hover .port-overlay { opacity: 1; }
-    .port-label { color: var(--white); font-size: .82rem; font-weight: 500; letter-spacing: .05em; }
-    .port-cat { display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sky-300); margin-bottom: 4px; }
-
-    .p1 { grid-column: 1/6; grid-row: 1; }
-    .p2 { grid-column: 6/9; grid-row: 1; }
-    .p3 { grid-column: 9/13; grid-row: 1; }
-    .p4 { grid-column: 1/4; grid-row: 2; }
-    .p5 { grid-column: 4/8; grid-row: 2; }
-    .p6 { grid-column: 8/13; grid-row: 2; }
-
-    /* ── PROCESS ── */
-    .process { background: var(--sky-500); color: var(--white); }
-    .process .sec-eyebrow { color: rgba(255,255,255,.6); }
-    .process .sec-eyebrow::before { background: rgba(255,255,255,.4); }
-    .process .sec-title { color: var(--white); }
-    .process .sec-title em { color: var(--sky-200); }
-    .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; align-items: center; }
-    .process-steps { display: flex; flex-direction: column; gap: 0; }
-    .step {
-      display: flex; gap: 22px; align-items: flex-start;
-      padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.1);
-      position: relative;
-    }
-    .step:last-child { border: none; }
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 500;
-      color: rgba(255,255,255,.2); line-height: 1;
-      min-width: 36px; flex-shrink: 0;
-    }
-    .step-body {}
-    .step-name { font-size: .92rem; font-weight: 500; color: var(--white); margin-bottom: 6px; }
-    .step-desc { font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.6); }
-    .process-img-wrap { border-radius: 6px; overflow: hidden; height: 460px; }
-    .process-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ── REVIEWS ── */
-    .reviews { background: var(--cream); }
-    .rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
-    .rev-card {
-      background: var(--white); border-radius: 6px;
-      padding: 30px 26px; border: 1px solid var(--warm-200);
-      transition: all .3s;
-    }
-    .rev-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .quote-mark {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem; color: var(--sky-200);
-      line-height: .7; margin-bottom: 14px; display: block;
-    }
-    .rev-text { font-size: .86rem; line-height: 1.85; color: var(--text-mid); font-style: italic; margin-bottom: 22px; }
-    .rev-stars { color: #f0a500; font-size: .85rem; letter-spacing: 2px; margin-bottom: 12px; }
-    .rev-author { font-size: .8rem; font-weight: 500; color: var(--brown-600); }
-    .rev-loc { font-size: .72rem; color: var(--text-soft); }
-
-    /* ── HOURS & CONTACT ── */
-    .contact-section { background: var(--brown-600); color: var(--white); }
-    .contact-section .sec-eyebrow { color: var(--brown-300); }
-    .contact-section .sec-eyebrow::before { background: var(--brown-400); }
-    .contact-section .sec-title { color: var(--white); }
-    .contact-section .sec-title em { color: var(--sky-300); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 52px; }
-
-    .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table tr { border-bottom: 1px solid rgba(255,255,255,.08); }
-    .hours-table tr:last-child { border: none; }
-    .hours-table td { padding: 13px 0; font-size: .87rem; color: rgba(255,255,255,.6); font-weight: 300; }
-    .hours-table td:last-child { text-align: right; color: var(--sky-300); }
-    .hours-table tr.today td { color: var(--white) !important; font-weight: 500; }
-    .hours-table tr.closed td:last-child { color: rgba(255,100,100,.7); }
-    .now-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #5de377; margin-left: 7px; vertical-align: middle; }
-    .note-sm { font-size: .68rem; color: var(--brown-300); display: block; margin-top: 3px; }
-
-    .contact-details { display: flex; flex-direction: column; gap: 26px; }
-    .cd-item { display: flex; gap: 16px; align-items: flex-start; }
-    .cd-icon {
-      width: 44px; height: 44px; border-radius: 6px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.05rem; flex-shrink: 0;
-    }
-    .cd-label { font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brown-300); display: block; margin-bottom: 4px; }
-    .cd-val { font-size: .9rem; color: var(--white); line-height: 1.6; }
-    .cd-val a { color: var(--white); text-decoration: none; transition: color .2s; }
-    .cd-val a:hover { color: var(--sky-300); }
-
-    .map-wrap { margin-top: 28px; border-radius: 8px; overflow: hidden; height: 190px; border: 1px solid rgba(255,255,255,.1); }
-    .map-wrap iframe { width: 100%; height: 100%; border: none; filter: sepia(.4) contrast(1.1) brightness(.9); }
-
-    /* ── CTA ── */
-    .cta-sec {
-      background: var(--cream);
-      padding: 80px 8%; text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-sec::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, var(--sky-100) 0%, transparent 65%);
-      border-radius: 50%; opacity: .6;
-    }
-    .cta-sec h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem,3.5vw,3.2rem);
-      font-weight: 400; color: var(--brown-600); margin-bottom: 16px;
-      position: relative;
-    }
-    .cta-sec h2 em { font-style: italic; color: var(--sky-500); }
-    .cta-sec p { font-size: .9rem; color: var(--text-soft); margin-bottom: 36px; position: relative; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark); color: rgba(255,255,255,.4);
-      padding: 24px 8%; display: flex;
-      align-items: center; justify-content: space-between;
-      font-size: .75rem; flex-wrap: wrap; gap: 10px;
-    }
-    footer a { color: var(--sky-400); text-decoration: none; }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; color: rgba(255,255,255,.7); font-weight: 500;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes heroLeft {
-      from { opacity: 0; transform: translateX(-30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes heroRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
-      .hero-right { height: 320px; }
-      .about-inner, .process-grid, .contact-grid { grid-template-columns: 1fr; }
-      .svc-grid, .rev-grid { grid-template-columns: 1fr 1fr; }
-      nav a:not(.nav-cta) { display: none; }
-    }
-    @media (max-width: 600px) {
-      .svc-grid, .rev-grid, .about-feats { grid-template-columns: 1fr; }
-      .port-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
-      .p1,.p2,.p3,.p4,.p5,.p6 { grid-column: auto; grid-row: auto; }
-      section { padding: 64px 5%; }
-    }
-    @media (pointer: coarse) {
-  .cursor,
-  .cursor-ring {
-    display: none;
-  }
-}
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="BK Interior Design – Premium interior designers in Surat. Home interiors, modular kitchens, office spaces & more. Free consultation available."/>
+<title>BK Interior Design | Premium Interior Designers in Surat</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="curR"></div>
+<div id="cur"></div><div id="curRing"></div>
 
-<!-- NAV -->
-<header id="hdr">
-  <a class="logo" href="#">
-    <span class="l1">BK Interior Design</span>
-    <span class="l2">Surat · Gujarat</span>
+<div id="loader">
+  <div class="loader-logo">
+    <div class="ll-title">BK Interior Design</div>
+    <div class="ll-sub">Premium Interiors · Surat</div>
+  </div>
+  <div class="loader-line"></div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+</div>
+
+<a class="float-wa" href="https://wa.me/919979432272?text=Hi%20BK%20Interior%20Design%2C%20I%27m%20interested%20in%20your%20services." target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<a class="float-call" href="tel:+919979432272" aria-label="Call Now">
+  <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+</a>
+
+<nav id="nav">
+  <a class="nav-brand" href="index.html">
+    <span class="nb1">BK Interior Design</span>
+    <span class="nb2">Surat · Gujarat</span>
   </a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:+919979432272" class="nav-cta">Get a Quote</a>
-  </nav>
-</header>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="brochure.html">Brochure</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://wa.me/919979432272?text=Hi%2C%20I%27d%20like%20a%20free%20consultation." target="_blank" class="nav-cta">Free Consultation</a>
+  </div>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="brochure.html">Brochure</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://wa.me/919979432272" target="_blank" class="mob-cta">💬 WhatsApp for Free Consultation</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-left">
-    <span class="eyebrow">Interior Design Studio</span>
-    <h1 class="hero-title">
-      Spaces That<br/>
-      <em>Tell Your Story</em>
-    </h1>
-    <p class="hero-desc">
-      Crafting beautifully designed interiors that reflect your personality — from concept to completion, across homes, offices and commercial spaces in Surat.
-    </p>
-    <div class="hero-btns">
-      <a href="tel:+919979432272" class="btn-sky">Start Your Project</a>
-      <a href="#portfolio" class="btn-ghost">View Portfolio</a>
+  <div class="slides">
+    <div class="slide active">
+      <div class="slide-bg"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85" alt="Living Room"/></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Living Room Design</div>
+        <h1 class="slide-h1">Designing Spaces<br/>That Feel <em>Like Home</em></h1>
+        <p class="slide-sub">Modern Interiors · Kitchens · Offices · Bedrooms<br/>Crafted for how you truly live.</p>
+        <div class="slide-btns">
+          <a href="https://wa.me/919979432272?text=Hi%2C%20I%27d%20like%20a%20free%20consultation." target="_blank" class="btn btn-blue btn-lg">Get Free Consultation</a>
+          <a href="portfolio.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:white">View Portfolio</a>
+        </div>
+      </div>
+      <div class="slide-label"><strong>Living Room</strong><span>Contemporary Design · Surat</span></div>
     </div>
-    <div class="hero-nums">
-      <div class="hnum"><span class="hnum-n">8+</span><span class="hnum-l">Years Experience</span></div>
-      <div class="hnum"><span class="hnum-n">200+</span><span class="hnum-l">Projects Done</span></div>
-      <div class="hnum"><span class="hnum-n">100%</span><span class="hnum-l">Client Satisfaction</span></div>
+    <div class="slide">
+      <div class="slide-bg"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=85" alt="Modular Kitchen"/></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Modular Kitchen</div>
+        <h1 class="slide-h1">Kitchens Designed<br/>For <em>How You Cook</em></h1>
+        <p class="slide-sub">Smart layouts · Premium fittings · Beautiful finishes<br/>Where every meal becomes a pleasure.</p>
+        <div class="slide-btns">
+          <a href="https://wa.me/919979432272?text=Hi%2C%20I%27m%20interested%20in%20a%20Modular%20Kitchen." target="_blank" class="btn btn-blue btn-lg">Enquire Now</a>
+          <a href="services.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:white">Our Services</a>
+        </div>
+      </div>
+      <div class="slide-label"><strong>Modular Kitchen</strong><span>Italian Hardware · Nana Varachha</span></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&q=85" alt="Bedroom Design"/></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Bedroom Design</div>
+        <h1 class="slide-h1">Your Personal<br/><em>Sanctuary</em> Awaits</h1>
+        <p class="slide-sub">Serene bedrooms designed for rest · romance · retreat<br/>Every detail crafted with intention.</p>
+        <div class="slide-btns">
+          <a href="https://wa.me/919979432272?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20bedroom%20design." target="_blank" class="btn btn-blue btn-lg">Get Free Consultation</a>
+          <a href="portfolio.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:white">View Projects</a>
+        </div>
+      </div>
+      <div class="slide-label"><strong>Bedroom Suite</strong><span>Luxury Interiors · Surat</span></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85" alt="Office Interior"/></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Office Interior</div>
+        <h1 class="slide-h1">Workspaces That<br/><em>Inspire</em> Performance</h1>
+        <p class="slide-sub">Productive · Branded · Beautiful office interiors<br/>Designed to impress clients and motivate teams.</p>
+        <div class="slide-btns">
+          <a href="https://wa.me/919979432272?text=Hi%2C%20I%27m%20interested%20in%20office%20interior%20design." target="_blank" class="btn btn-blue btn-lg">Get a Quote</a>
+          <a href="services.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:white">Our Services</a>
+        </div>
+      </div>
+      <div class="slide-label"><strong>Office Interior</strong><span>Corporate Design · Surat</span></div>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="./unnamed.webp" alt="Interior Design"/>
-    <div class="hero-tag">
-      <strong>BK Interiors</strong>
-      <span>Nana Varachha, Surat</span>
+  <div class="slider-nav">
+    <div class="sn-btns">
+      <button class="sn-btn" onclick="prevSlide()">‹</button>
+      <button class="sn-btn" onclick="nextSlide()">›</button>
     </div>
+  </div>
+  <div class="slider-dots" id="sliderDots">
+    <div class="sd active" onclick="goSlide(0)"></div>
+    <div class="sd" onclick="goSlide(1)"></div>
+    <div class="sd" onclick="goSlide(2)"></div>
+    <div class="sd" onclick="goSlide(3)"></div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>Living Room Design</span>
-    <span>Bedroom Interiors</span>
-    <span>Kitchen Design</span>
-    <span>Office Spaces</span>
-    <span>False Ceiling</span>
-    <span>Custom Furniture</span>
-    <span>Modular Kitchens</span>
-    <span>Commercial Interiors</span>
-    <span>3D Visualization</span>
-    <span>Living Room Design</span>
-    <span>Bedroom Interiors</span>
-    <span>Kitchen Design</span>
-    <span>Office Spaces</span>
-    <span>False Ceiling</span>
-    <span>Custom Furniture</span>
-    <span>Modular Kitchens</span>
-    <span>Commercial Interiors</span>
-    <span>3D Visualization</span>
-  </div>
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track">
+  <span class="ticker-item">Home Interior Design</span><span class="ticker-item">Modular Kitchens</span>
+  <span class="ticker-item">Office Interiors</span><span class="ticker-item">Custom Furniture</span>
+  <span class="ticker-item">Space Planning</span><span class="ticker-item">Renovation</span>
+  <span class="ticker-item">3D Visualization</span><span class="ticker-item">False Ceiling</span>
+  <span class="ticker-item">Bedroom Design</span><span class="ticker-item">Free Consultation Available</span>
+  <span class="ticker-item">Home Interior Design</span><span class="ticker-item">Modular Kitchens</span>
+  <span class="ticker-item">Office Interiors</span><span class="ticker-item">Custom Furniture</span>
+  <span class="ticker-item">Space Planning</span><span class="ticker-item">Renovation</span>
+  <span class="ticker-item">3D Visualization</span><span class="ticker-item">False Ceiling</span>
+  <span class="ticker-item">Bedroom Design</span><span class="ticker-item">Free Consultation Available</span>
+</div></div>
+
+<!-- STATS -->
+<div class="intro-nums">
+  <div class="in-card reveal"><div class="in-num">200+</div><div class="in-label">Projects Completed</div></div>
+  <div class="in-card reveal delay-1"><div class="in-num">8+</div><div class="in-label">Years Experience</div></div>
+  <div class="in-card reveal delay-2"><div class="in-num">100%</div><div class="in-label">Client Satisfaction</div></div>
+  <div class="in-card reveal delay-3"><div class="in-num">50+</div><div class="in-label">5-Star Reviews</div></div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-img-wrap reveal">
-      <img class="about-img-main" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85" alt="Interior Design Studio"/>
-      <img class="about-img-accent" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=80" alt="Design Detail"/>
-      <div class="about-badge">
-        <strong>8+</strong>
-        <span>Years of Excellence</span>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="sec-eyebrow">About Us</div>
-      <h2 class="sec-title">Designing Spaces,<br/><em>Inspiring Lives</em></h2>
-      <p class="about-body">
-        BK Interior Design is a full-service interior design studio based in Nana Varachha, Surat. We believe that great design goes beyond aesthetics — it transforms how you live, work and feel in a space. Our team combines thoughtful planning with creative execution to deliver interiors that are both beautiful and functional.
-      </p>
-      <p class="about-body" style="margin-top:-10px;">
-        From contemporary minimalism to rich traditional styles, we tailor every project to your vision, timeline and budget.
-      </p>
-      <div class="about-feats">
-        <div class="feat-box"><div class="fb-title">Custom Design</div><div class="fb-desc">Every space designed uniquely to suit your lifestyle</div></div>
-        <div class="feat-box"><div class="fb-title">3D Visualization</div><div class="fb-desc">See your space before a single nail is hammered</div></div>
-        <div class="feat-box"><div class="fb-title">End-to-End</div><div class="fb-desc">From concept and planning to final installation</div></div>
-        <div class="feat-box"><div class="fb-title">On-Time Delivery</div><div class="fb-desc">Committed timelines with zero compromise on quality</div></div>
-      </div>
-      <a href="tel:+919979432272" class="btn-sky">Talk to Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div style="text-align:center; margin-bottom: 0;">
-    <div class="sec-eyebrow" style="justify-content:center;">What We Do</div>
-    <h2 class="sec-title">Our <em>Services</em></h2>
-    <p class="sec-sub" style="margin: 0 auto;">From a single room refresh to a full-home transformation — we do it all.</p>
+<!-- FEATURED SERVICES -->
+<section class="section section-alt">
+  <div class="sec-header reveal">
+    <div class="sec-eye">What We Do</div>
+    <h2 class="sec-title">Our <em>Interior Design</em> Services</h2>
+    <p class="sec-sub">From a single room refresh to a complete home transformation — premium design tailored to every lifestyle.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc-card reveal"><div class="svc-num">01</div><div class="svc-name">Residential Design</div><p class="svc-desc">Complete home interiors — living rooms, bedrooms, kitchens and more — crafted to your taste.</p></div>
-    <div class="svc-card reveal"><div class="svc-num">02</div><div class="svc-name">Commercial Spaces</div><p class="svc-desc">Office interiors, showrooms and retail spaces that make a powerful first impression.</p></div>
-    <div class="svc-card reveal"><div class="svc-num">03</div><div class="svc-name">Modular Kitchen</div><p class="svc-desc">Smart, functional kitchens with premium fittings, efficient layouts and beautiful finishes.</p></div>
-    <div class="svc-card reveal"><div class="svc-num">04</div><div class="svc-name">False Ceiling & Lighting</div><p class="svc-desc">Architectural ceiling designs paired with perfect lighting to set the right mood in every room.</p></div>
-    <div class="svc-card reveal"><div class="svc-num">05</div><div class="svc-name">Custom Furniture</div><p class="svc-desc">Bespoke furniture crafted to perfectly fit your space, style and storage needs.</p></div>
-    <div class="svc-card reveal"><div class="svc-num">06</div><div class="svc-name">3D Walkthrough</div><p class="svc-desc">Photorealistic 3D renders and walkthroughs so you can visualise the final design before work begins.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon">🏠</div><div class="svc-name">Home Interior Design</div><p class="svc-desc">Complete 2BHK / 3BHK / 4BHK home interiors designed to reflect your personality. From living rooms to bedrooms, we handle it all.</p><div class="svc-benefit">Personalised design for every room</div></div>
+    <div class="svc-card reveal delay-1"><div class="svc-icon">🍳</div><div class="svc-name">Modular Kitchen</div><p class="svc-desc">Smart, elegant modular kitchens with premium hardware — L-shaped, U-shaped, parallel and island layouts. Quartz countertops, Hettich & Häfele fittings.</p><div class="svc-benefit">Maximum storage, minimal clutter</div></div>
+    <div class="svc-card reveal delay-2"><div class="svc-icon">💼</div><div class="svc-name">Office Interior</div><p class="svc-desc">Professional office interiors that boost productivity and impress clients. From startup studios to corporate headquarters.</p><div class="svc-benefit">Boost productivity & brand image</div></div>
+    <div class="svc-card reveal delay-3"><div class="svc-icon">🛋️</div><div class="svc-name">Furniture Design</div><p class="svc-desc">Bespoke furniture crafted to your exact dimensions — wardrobes, beds, TV units, study desks, sofas and more.</p><div class="svc-benefit">Built to fit, built to last</div></div>
+    <div class="svc-card reveal delay-4"><div class="svc-icon">🔧</div><div class="svc-name">Renovation</div><p class="svc-desc">Transform your existing space without a complete rebuild. Smart renovations — flooring, walls, ceiling, lighting and more.</p><div class="svc-benefit">New look, smart investment</div></div>
+    <div class="svc-card reveal delay-5"><div class="svc-icon">📐</div><div class="svc-name">Space Planning</div><p class="svc-desc">Expert space analysis and 3D planning to optimise every square foot. See your redesigned space in photorealistic 3D.</p><div class="svc-benefit">Visualise before you decide</div></div>
+  </div>
+  <div style="text-align:center;margin-top:44px">
+    <a href="services.html" class="btn btn-blue btn-lg">Explore All Services →</a>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="port-header">
-    <div>
-      <div class="sec-eyebrow">Our Work</div>
-      <h2 class="sec-title">Recent <em>Projects</em></h2>
-    </div>
-    <a href="tel:+919979432272" class="btn-sky">Start Your Project</a>
+<!-- FEATURED PORTFOLIO -->
+<section class="section">
+  <div class="sec-header">
+    <div class="sec-eye reveal">Our Work</div>
+    <h2 class="sec-title reveal">Featured <em>Projects</em></h2>
+    <p class="sec-sub reveal">Each project is a unique story of transformation.</p>
   </div>
   <div class="port-grid">
-    <div class="port-item p1 reveal">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=80" alt="Living Room"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Living Room</span>Modern Elegance</div></div>
+    <div class="port-item reveal" data-cat="living">
+      <div class="port-img"><span class="port-cat-tag">Living Room</span><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Living Room Project"/></div>
+      <div class="port-body"><div class="port-name">The Sharma Residence</div><div class="port-meta"><span>📍 Nana Varachha</span><span>🏠 3BHK</span><span>✅ Completed</span></div></div>
     </div>
-    <div class="port-item p2 reveal">
-      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=80" alt="Bedroom"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Bedroom</span>Serene Retreat</div></div>
+    <div class="port-item reveal delay-1" data-cat="kitchen">
+      <div class="port-img"><span class="port-cat-tag">Kitchen</span><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kitchen Project"/></div>
+      <div class="port-body"><div class="port-name">The Patel Modular Kitchen</div><div class="port-meta"><span>📍 Vesu, Surat</span><span>🍳 U-Shape</span><span>✅ Completed</span></div></div>
     </div>
-    <div class="port-item p3 reveal">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Kitchen"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Kitchen</span>Smart &amp; Sleek</div></div>
+    <div class="port-item reveal delay-2" data-cat="bedroom">
+      <div class="port-img"><span class="port-cat-tag">Bedroom</span><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80" alt="Bedroom Project"/></div>
+      <div class="port-body"><div class="port-name">The Desai Master Suite</div><div class="port-meta"><span>📍 Sarthana</span><span>🛏 Master Bedroom</span><span>✅ Completed</span></div></div>
     </div>
-    <div class="port-item p4 reveal">
-      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80" alt="Dining"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Dining</span>Warm Gatherings</div></div>
-    </div>
-    <div class="port-item p5 reveal">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80" alt="Office"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Office</span>Productive Spaces</div></div>
-    </div>
-    <div class="port-item p6 reveal">
-      <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=700&q=80" alt="Bathroom"/>
-      <div class="port-overlay"><div class="port-label"><span class="port-cat">Bathroom</span>Spa-Like Comfort</div></div>
-    </div>
+  </div>
+  <div style="text-align:center;margin-top:44px">
+    <a href="portfolio.html" class="btn btn-blue btn-lg">View Full Portfolio →</a>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="sec-eyebrow">How We Work</div>
-  <h2 class="sec-title">Our <em>Design Process</em></h2>
-  <div class="process-grid">
-    <div class="process-steps reveal">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-body"><div class="step-name">Consultation</div><div class="step-desc">We begin with a detailed discussion to understand your vision, needs, lifestyle and budget.</div></div>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-body"><div class="step-name">Concept & Design</div><div class="step-desc">Our designers create mood boards, floor plans and 3D visualizations tailored to your style.</div></div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-body"><div class="step-name">Material Selection</div><div class="step-desc">We guide you through premium material, colour and finish choices within your budget.</div></div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-body"><div class="step-name">Execution & Handover</div><div class="step-desc">Our skilled team executes the design with precision, delivering your dream space on time.</div></div>
-      </div>
+<!-- TESTIMONIALS -->
+<section class="section section-alt">
+  <div class="sec-header reveal" style="text-align:center">
+    <div class="sec-eye" style="justify-content:center">Client Stories</div>
+    <h2 class="sec-title">What Our Clients <em>Say</em></h2>
+    <p class="sec-sub" style="margin:12px auto 0;text-align:center">Real words from real homeowners across Surat.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><span class="tq-mark">"</span><div class="testi-rating-badge">★★★★★ 5.0</div><div class="testi-stars">★★★★★</div><p class="testi-text">BK Interior Design completely transformed our 3BHK. The 3D walkthrough helped us visualise everything perfectly, and the final result exceeded every expectation. Professional, creative and on time!</p><div class="testi-author">Mehul & Riya Shah</div><div class="testi-loc">📍 Nana Varachha, Surat</div></div>
+    <div class="testi-card reveal delay-2"><span class="tq-mark">"</span><div class="testi-rating-badge">★★★★★ 5.0</div><div class="testi-stars">★★★★★</div><p class="testi-text">We hired BK for our office interior and the response from clients has been phenomenal. Sleek, functional and truly reflects our brand. Delivered on budget and ahead of schedule!</p><div class="testi-author">Priya Desai</div><div class="testi-loc">📍 Sarthana, Surat</div></div>
+    <div class="testi-card reveal delay-4"><span class="tq-mark">"</span><div class="testi-rating-badge">★★★★★ 5.0</div><div class="testi-stars">★★★★★</div><p class="testi-text">The modular kitchen they designed is absolutely stunning — every inch is perfectly utilised. Quality of materials and craftsmanship is exceptional. Already recommended to four friends!</p><div class="testi-author">Rajan & Kiran Patel</div><div class="testi-loc">📍 Subhash Nagar, Surat</div></div>
+  </div>
+</section>
+
+<!-- BROCHURE CTA -->
+<section class="brochure-section">
+  <div class="brochure-inner">
+    <div class="brochure-visual reveal-l">
+      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80" alt="BK Interior Design Brochure"/>
+      <div class="brochure-visual-badge"><strong>2025</strong>Portfolio</div>
     </div>
-    <div class="reveal">
-      <div class="process-img-wrap">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Design Process"/>
+    <div class="brochure-content reveal-r">
+      <div class="sec-eye light">Resources</div>
+      <h2 class="sec-title light">Download Our <em>Brochure</em></h2>
+      <p class="sec-sub light" style="margin-top:12px">Get our full company profile and portfolio brochure — detailed project breakdowns, pricing guides, and our complete service list.</p>
+      <div class="brochure-btns">
+        <a href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20brochure." target="_blank" class="btn btn-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Get Brochure on WhatsApp</a>
+        <a href="brochure.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8)">📄 View Brochure Page</a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- REVIEWS -->
-<section class="reviews">
-  <div class="sec-eyebrow">Testimonials</div>
-  <h2 class="sec-title">What Clients <em>Say</em></h2>
-  <div class="rev-grid">
-    <div class="rev-card reveal">
-      <span class="quote-mark">"</span>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">BK Interior transformed our 3BHK completely. The team was professional, the 3D walkthrough helped us visualise everything, and the final result exceeded our expectations.</p>
-      <div class="rev-author">Mehul Shah</div>
-      <div class="rev-loc">Nana Varachha, Surat</div>
-    </div>
-    <div class="rev-card reveal">
-      <span class="quote-mark">"</span>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">Got our office designed by BK and the feedback from clients has been incredible. Very elegant, modern and functional. Highly recommend for commercial spaces.</p>
-      <div class="rev-author">Priya Desai</div>
-      <div class="rev-loc">Sarthana, Surat</div>
-    </div>
-    <div class="rev-card reveal">
-      <span class="quote-mark">"</span>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">The modular kitchen they designed is absolutely stunning. On budget, on time, and the quality is outstanding. Will definitely use BK Interiors for our next home.</p>
-      <div class="rev-author">Rajan Patel</div>
-      <div class="rev-loc">Subhash Nagar, Surat</div>
-    </div>
-  </div>
-</section>
-
-<!-- HOURS & CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="sec-eyebrow">Visit Us</div>
-  <h2 class="sec-title">Hours &amp; <em>Contact</em></h2>
-  <div class="contact-grid">
-    <div class="reveal">
-      <table class="hours-table">
-        <tr>
-          <td>Monday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr>
-          <td>Tuesday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr>
-          <td>Wednesday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr>
-          <td>Thursday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr>
-          <td>Friday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr>
-          <td>Saturday</td>
-          <td>10 am – 7 pm</td>
-        </tr>
-        <tr class="closed">
-          <td>Sunday</td>
-          <td>Closed</td>
-        </tr>
-      </table>
-    </div>
-    <div class="contact-details reveal">
-      <div class="cd-item">
-        <div class="cd-icon">📞</div>
-        <div><span class="cd-label">Phone</span><span class="cd-val"><a href="tel:+919979432272">+91 99794 32272</a></span></div>
-      </div>
-      <div class="cd-item">
-        <div class="cd-icon">📍</div>
-        <div><span class="cd-label">Address</span><span class="cd-val">150, Avadh Viceroy, Sarthana Jakat Naka,<br/>Subhash Nagar, Nana Varachha,<br/>Surat, Gujarat – 395013</span></div>
-      </div>
-      <div class="cd-item">
-        <div class="cd-icon">🕐</div>
-        <div><span class="cd-label">Working Hours</span><span class="cd-val">Mon – Sat: 10:00 AM – 7:00 PM<br/>Sunday: Closed</span></div>
-      </div>
-      <div class="map-wrap">
-        <iframe src="https://www.google.com/maps?q=Avadh+Viceroy+Sarthana+Jakat+Naka+Nana+Varachha+Surat&output=embed" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-sec">
-  <h2>Ready to <em>Transform</em> Your Space?</h2>
-  <p>Let's create something beautiful together. Call us for a free consultation.</p>
-  <a href="tel:+919979432272" class="btn-sky">📞 &nbsp;+91 99794 32272</a>
-</div>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">BK Interior Design</span>
-  <span>© 2025 BK Interior Design · Nana Varachha, Surat</span>
-  <a href="tel:+919979432272">+91 99794 32272</a>
+  <div class="footer-top">
+    <div>
+      <div class="fb-logo">BK Interior Design</div>
+      <span class="fb-tag">Premium Interiors · Surat, Gujarat</span>
+      <p class="fb-desc">Transforming spaces into beautiful living experiences across Surat since 2016. Your dream interior is just one call away.</p>
+      <div class="fb-social">
+        <a href="https://wa.me/919979432272" target="_blank" class="fbs">W</a>
+        <a href="tel:+919979432272" class="fbs">☎</a>
+        <a href="https://maps.app.goo.gl/T31pjjbV6wrdGJmz5" target="_blank" class="fbs">📍</a>
+      </div>
+    </div>
+    <div>
+      <div class="fc-title">Navigate</div>
+      <a href="index.html" class="fc-link">Home</a>
+      <a href="about.html" class="fc-link">About Us</a>
+      <a href="services.html" class="fc-link">Services</a>
+      <a href="portfolio.html" class="fc-link">Portfolio</a>
+      <a href="brochure.html" class="fc-link">Brochure</a>
+      <a href="contact.html" class="fc-link">Contact</a>
+    </div>
+    <div>
+      <div class="fc-title">Services</div>
+      <a href="services.html" class="fc-link">Home Interior</a>
+      <a href="services.html" class="fc-link">Modular Kitchen</a>
+      <a href="services.html" class="fc-link">Office Interior</a>
+      <a href="services.html" class="fc-link">Custom Furniture</a>
+      <a href="services.html" class="fc-link">Renovation</a>
+      <a href="services.html" class="fc-link">Space Planning</a>
+    </div>
+    <div>
+      <div class="fc-title">Contact</div>
+      <a href="tel:+919979432272" class="fc-link">📞 +91 99794 32272</a>
+      <a href="https://wa.me/919979432272" target="_blank" class="fc-link">💬 WhatsApp Now</a>
+      <div class="fc-link" style="cursor:default;color:rgba(255,255,255,.3)">📍 150, Avadh Viceroy,<br/>Nana Varachha, Surat 395013</div>
+      <div class="fc-link" style="cursor:default;color:rgba(255,255,255,.3);margin-top:8px">🕐 Mon–Sat: 10AM–7PM</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 BK Interior Design · All Rights Reserved · Surat, Gujarat</span>
+    <span>Designed with ♥ in Surat</span>
+  </div>
 </footer>
 
-<script>
-  // Scroll header
-  window.addEventListener('scroll', () => {
-    document.getElementById('hdr').classList.toggle('scrolled', scrollY > 20);
-  });
-
-  // Current Day Highlight 
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const today = new Date().getDay(); // 0 = Sunday
-
-    const rows = document.querySelectorAll('.hours-table tr');
-
-    rows.forEach(row => {
-      const dayCell = row.querySelector('td');
-      if (!dayCell) return;
-
-      const dayText = dayCell.textContent.trim();
-
-      if (dayText.includes(days[today])) {
-        row.classList.add('today');
-
-        // add green dot
-        const dot = document.createElement('span');
-        dot.classList.add('now-dot');
-        dayCell.appendChild(dot);
-      }
-    });
-  
-  
-  // Cursor
-  
-  if (window.matchMedia("(pointer: fine)").matches) {
-    
-    const cur = document.getElementById('cur');
-    const curR = document.getElementById('curR');
-    let mx=0, my=0, rx=0, ry=0;
-    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-    (function lerp() {
-    rx += (mx-rx)*.52; ry += (my-ry)*.52;
-    curR.style.left=rx+'px'; curR.style.top=ry+'px';
-    requestAnimationFrame(lerp);
-  })();
-  
-  const hoverEls = document.querySelectorAll('a, button');
-  
-    hoverEls.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        curR.style.transform = 'translate(-50%, -50%) scale(1.4)';
-        cur.style.transform = 'translate(-50%, -50%) scale(1.2)';
-      });
-
-      el.addEventListener('mouseleave', () => {
-        curR.style.transform = 'translate(-50%, -50%) scale(1)';
-        cur.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
-    });
-    
-    document.addEventListener('click', () => {
-        curR.style.transform = 'translate(-50%, -50%) scale(0.7)';
-        setTimeout(() => {
-          curR.style.transform = 'translate(-50%, -50%) scale(1)';
-        }, 150);
-      });
-      
-    }
-      // Reveal
-      const obs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i*80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+<script src="script.js"></script>
 </body>
 </html>

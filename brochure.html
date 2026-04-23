@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Download BK Interior Design Brochure – Get our full company profile, portfolio and pricing guide for premium interiors in Surat."
+    />
+    <title>Brochure | BK Interior Design Surat</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .brochure-page-hero {
+        background: linear-gradient(
+          135deg,
+          #1a1a1a 0%,
+          #2b2b2b 50%,
+          #1a1a1a 100%
+        );
+        padding: 140px 7% 80px;
+        margin-top: 70px;
+        text-align: center;
+      }
+      .brochure-page-hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        color: var(--white);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .brochure-page-hero h1 em {
+        font-style: italic;
+        color: var(--blue-light);
+      }
+      .brochure-page-hero p {
+        font-size: 0.96rem;
+        color: rgba(255, 255, 255, 0.65);
+        max-width: 520px;
+        margin: 0 auto 36px;
+        line-height: 1.8;
+      }
+      .brochure-card {
+        background: var(--white);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        border: 1px solid var(--beige);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+      .brochure-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+      }
+      .brochure-card-img {
+        height: 260px;
+        overflow: hidden;
+      }
+      .brochure-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+      }
+      .brochure-card:hover .brochure-card-img img {
+        transform: scale(1.06);
+      }
+      .brochure-card-body {
+        padding: 28px 28px 32px;
+      }
+      .brochure-card-tag {
+        font-size: 0.64rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .brochure-card-tag::before {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--blue);
+      }
+      .brochure-card-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-bottom: 10px;
+      }
+      .brochure-card-desc {
+        font-size: 0.84rem;
+        line-height: 1.8;
+        color: var(--soft);
+        margin-bottom: 24px;
+      }
+      .brochure-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 52px;
+      }
+      @media (max-width: 1024px) {
+        .brochure-cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .brochure-cards-grid {
+          grid-template-columns: 1fr;
+        }
+        .brochure-page-hero {
+          padding: 120px 5% 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cur"></div>
+    <div id="curRing"></div>
+    <div id="loader">
+      <div class="loader-logo">
+        <div class="ll-title">BK Interior Design</div>
+        <div class="ll-sub">Premium Interiors · Surat</div>
+      </div>
+      <div class="loader-line"></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <a
+      class="float-wa"
+      href="https://wa.me/919979432272?text=Hi%20BK%20Interior%20Design%2C%20please%20send%20me%20your%20brochure."
+      target="_blank"
+      aria-label="WhatsApp"
+      ><svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        /></svg
+    ></a>
+    <a class="float-call" href="tel:+919979432272" aria-label="Call Now"
+      ><svg viewBox="0 0 24 24">
+        <path
+          d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+        /></svg
+    ></a>
+
+    <nav id="nav">
+      <a class="nav-brand" href="index.html"
+        ><span class="nb1">BK Interior Design</span
+        ><span class="nb2">Surat · Gujarat</span></a
+      >
+      <div class="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About</a
+        ><a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="brochure.html" class="active">Brochure</a>
+        <a href="contact.html">Contact</a>
+        <a
+          href="https://wa.me/919979432272?text=Hi%2C%20I%27d%20like%20a%20free%20consultation."
+          target="_blank"
+          class="nav-cta"
+          >Free Consultation</a
+        >
+      </div>
+      <button class="ham" id="ham" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mob-nav" id="mobNav">
+      <a href="index.html">Home</a><a href="about.html">About</a
+      ><a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a><a href="brochure.html">Brochure</a
+      ><a href="contact.html">Contact</a>
+      <a href="https://wa.me/919979432272" target="_blank" class="mob-cta"
+        >💬 WhatsApp for Free Consultation</a
+      >
+    </div>
+
+    <!-- HERO -->
+    <div class="brochure-page-hero">
+      <div
+        class="breadcrumb"
+        style="justify-content: center; margin-bottom: 20px"
+      >
+        <a href="index.html" style="color: rgba(255, 255, 255, 0.5)">Home</a
+        ><span style="color: rgba(255, 255, 255, 0.3)">/</span
+        ><span style="color: rgba(255, 255, 255, 0.5)">Brochure</span>
+      </div>
+      <h1>Our <em>Brochures</em> & Resources</h1>
+      <p>
+        Download our company profile, service guide and portfolio brochure. Get
+        detailed project breakdowns, pricing guides, and our complete service
+        list — all free.
+      </p>
+      <a
+        href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20brochure."
+        target="_blank"
+        class="btn btn-wa"
+        style="display: inline-flex; margin: 0 auto"
+        ><svg viewBox="0 0 24 24" style="width: 18px; fill: white">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          /></svg
+        >Get Brochure on WhatsApp</a
+      >
+    </div>
+
+    <!-- BROCHURE CARDS -->
+    <section class="section section-alt">
+      <div class="sec-header reveal" style="text-align: center">
+        <div class="sec-eye" style="justify-content: center">Resources</div>
+        <h2 class="sec-title">What's <em>Inside</em></h2>
+        <p class="sec-sub" style="margin: 12px auto 0; text-align: center">
+          Everything you need to know about BK Interior Design — all available
+          on request.
+        </p>
+      </div>
+      <div class="brochure-cards-grid">
+        <div class="brochure-card reveal">
+          <div class="brochure-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80"
+              alt="Company Profile"
+            />
+          </div>
+          <div class="brochure-card-body">
+            <div class="brochure-card-tag">Company Profile</div>
+            <div class="brochure-card-title">
+              BK Interior Design — 2025 Profile
+            </div>
+            <p class="brochure-card-desc">
+              Our full company story, team credentials, design philosophy,
+              project gallery and client testimonials. Everything you need to
+              know about us.
+            </p>
+            <a
+              href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20company%20profile."
+              target="_blank"
+              class="btn btn-blue btn-sm"
+              >Request on WhatsApp →</a
+            >
+          </div>
+        </div>
+        <div class="brochure-card reveal delay-1">
+          <div class="brochure-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80"
+              alt="Portfolio Brochure"
+            />
+          </div>
+          <div class="brochure-card-body">
+            <div class="brochure-card-tag">Work Portfolio</div>
+            <div class="brochure-card-title">2025 Project Portfolio</div>
+            <p class="brochure-card-desc">
+              Detailed case studies of our 200+ completed projects across Surat
+              — with before/after photos, client feedback and design breakdowns.
+            </p>
+            <a
+              href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20portfolio%20brochure."
+              target="_blank"
+              class="btn btn-blue btn-sm"
+              >Request on WhatsApp →</a
+            >
+          </div>
+        </div>
+        <div class="brochure-card reveal delay-2">
+          <div class="brochure-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"
+              alt="Services Guide"
+            />
+          </div>
+          <div class="brochure-card-body">
+            <div class="brochure-card-tag">Services Guide</div>
+            <div class="brochure-card-title">
+              Complete Services & Pricing Guide
+            </div>
+            <p class="brochure-card-desc">
+              Detailed service descriptions, material options, timeline
+              estimates, and transparent pricing guidelines for every type of
+              interior project.
+            </p>
+            <a
+              href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20services%20and%20pricing%20guide."
+              target="_blank"
+              class="btn btn-blue btn-sm"
+              >Request on WhatsApp →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN BROCHURE SECTION -->
+    <section class="brochure-section">
+      <div class="brochure-inner">
+        <div class="brochure-visual reveal-l">
+          <img
+            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80"
+            alt="BK Interior Design Brochure"
+          />
+          <div class="brochure-visual-badge">
+            <strong>2025</strong>Portfolio
+          </div>
+        </div>
+        <div class="brochure-content reveal-r">
+          <div class="sec-eye light">Get In Touch</div>
+          <h2 class="sec-title light">Request Your <em>Free Brochure</em></h2>
+          <p class="sec-sub light" style="margin-top: 12px">
+            WhatsApp or call us and we'll send you our full brochure, portfolio
+            and pricing guide within minutes — completely free, no obligations.
+          </p>
+          <div class="brochure-btns">
+            <a
+              href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20the%20BK%20Interior%20Design%20brochure."
+              target="_blank"
+              class="btn btn-wa"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                /></svg
+              >Get Brochure on WhatsApp</a
+            >
+            <a
+              href="tel:+919979432272"
+              class="btn btn-outline"
+              style="
+                border-color: rgba(255, 255, 255, 0.3);
+                color: rgba(255, 255, 255, 0.8);
+              "
+              >📞 Call for Company Profile</a
+            >
+            <a
+              href="https://wa.me/919979432272?text=Hi%2C%20please%20send%20me%20your%20work%20portfolio%20brochure."
+              target="_blank"
+              class="btn btn-outline"
+              style="
+                border-color: rgba(255, 255, 255, 0.3);
+                color: rgba(255, 255, 255, 0.8);
+              "
+              >📄 View Work Brochure</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-top">
+        <div>
+          <div class="fb-logo">BK Interior Design</div>
+          <span class="fb-tag">Premium Interiors · Surat, Gujarat</span>
+          <p class="fb-desc">
+            Transforming spaces into beautiful living experiences across Surat
+            since 2016.
+          </p>
+          <div class="fb-social">
+            <a href="https://wa.me/919979432272" target="_blank" class="fbs"
+              >W</a
+            ><a href="tel:+919979432272" class="fbs">☎</a
+            ><a
+              href="https://maps.app.goo.gl/T31pjjbV6wrdGJmz5"
+              target="_blank"
+              class="fbs"
+              >📍</a
+            >
+          </div>
+        </div>
+        <div>
+          <div class="fc-title">Navigate</div>
+          <a href="index.html" class="fc-link">Home</a
+          ><a href="about.html" class="fc-link">About Us</a
+          ><a href="services.html" class="fc-link">Services</a
+          ><a href="portfolio.html" class="fc-link">Portfolio</a
+          ><a href="brochure.html" class="fc-link">Brochure</a
+          ><a href="contact.html" class="fc-link">Contact</a>
+        </div>
+        <div>
+          <div class="fc-title">Services</div>
+          <a href="services.html" class="fc-link">Home Interior</a
+          ><a href="services.html" class="fc-link">Modular Kitchen</a
+          ><a href="services.html" class="fc-link">Office Interior</a
+          ><a href="services.html" class="fc-link">Custom Furniture</a
+          ><a href="services.html" class="fc-link">Renovation</a>
+        </div>
+        <div>
+          <div class="fc-title">Contact</div>
+          <a href="tel:+919979432272" class="fc-link">📞 +91 99794 32272</a
+          ><a href="https://wa.me/919979432272" target="_blank" class="fc-link"
+            >💬 WhatsApp Now</a
+          >
+          <div
+            class="fc-link"
+            style="cursor: default; color: rgba(255, 255, 255, 0.3)"
+          >
+            📍 150, Avadh Viceroy,<br />Nana Varachha, Surat 395013
+          </div>
+          <div
+            class="fc-link"
+            style="
+              cursor: default;
+              color: rgba(255, 255, 255, 0.3);
+              margin-top: 8px;
+            "
+          >
+            🕐 Mon–Sat: 10AM–7PM
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >© 2025 BK Interior Design · All Rights Reserved · Surat,
+          Gujarat</span
+        ><span>Designed with ♥ in Surat</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
